@@ -6,6 +6,7 @@ const mongoose = require('./server/shop_database');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const Product_Type = require('./models/product_type');
 
 app.engine('ejs', require('ejs-locals'));
 require('./config/passport')(passport);
@@ -35,6 +36,9 @@ app.use(function(req, res, next) {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
+    Product_Type.find({}, null, { sort: {product_type_name:1, product_subtype_name:1, product_sub_subtype_name:1} }, function (err, doc) {
+        res.locals.product_type = doc;
+    });
     next();
   });
   

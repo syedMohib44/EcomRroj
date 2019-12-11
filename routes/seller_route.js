@@ -18,7 +18,7 @@ Router.get('/seller/login', forwardAuthenticated, function (req, res) {
 });
 
 Router.get('/seller/register', forwardAuthenticated, function (req, res) {
-    res.render('seller-register');
+    res.render('seller-register', {user: '' , product_type: ''});
 });
 
 Router.post('/seller/register', function (req, res) {

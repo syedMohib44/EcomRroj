@@ -6,34 +6,22 @@ var Product_Type = require('../models/product_type');
 const fileUpload = require('express-fileupload');
 Router.use(fileUpload());
 const { ensureAuthenticated } = require('../config/auth');
+var GlobalProductType;
 //Get home page
 
 Router.get('/index.html', function (req, res) {
     Product.find(function (err, docs) {
-        // var productChuncks = [];
-        // var chunkSize = 3;
-        // for(var i = 0; i < docs.length; i += chunkSize){
-        //     productChuncks.push(docs.slice(i, i + chunkSize)); //this means if we are at 0 index the it takes whole chunck of product and put it in array as an objecy...
-        //     console.log(docs.length);
-        // }
-        Product_Type.find({}, null, { sort: {product_type_name:1, product_subtype_name:1, product_sub_subtype_name:1} }, function (err, doc) {
-                res.render("index", { products: docs, product_type: doc, user: req.user });
-        });
+        //Product_Type.find({}, null, { sort: {product_type_name:1, product_subtype_name:1, product_sub_subtype_name:1} }, function (err, doc) {
+            res.render("index", { products: docs, /*product_type: doc,*/ user: req.user });
+        //});
     });
 });
 
 //Get specific type of product
 Router.get('/index.html/:param1', ensureAuthenticated, function (req, res, next) {
-    Product_Type.find(function (err, doc) {//to find all product in this specific type
         Product.find({ _id: req.params.param1 }, function (err, docs) {
-            res.render("product_details", { product: docs, product_type: doc, user: req.user });
-            console.log(req.params);
-            //res.json({ products: docs, product_type: doc });
-        });
-        //return res.send(200, docs);
-        // docs.product_type_name = req.body.product_type_name;
-        // docs.product_type_quantity += parseInt(req.body.product_type_quantity);
-        // docs.save();
+        res.render("product_details", { product: docs, product_type: GlobalProductType, user: req.user });
+        console.log(req.params);
     });
 });
 
