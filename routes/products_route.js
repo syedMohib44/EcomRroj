@@ -12,7 +12,7 @@ var GlobalProductType;
 Router.get('/index.html', function (req, res) {
     Product.find(function (err, docs) {
         //Product_Type.find({}, null, { sort: {product_type_name:1, product_subtype_name:1, product_sub_subtype_name:1} }, function (err, doc) {
-            res.render("index", { products: docs, /*product_type: doc,*/ user: req.user });
+            res.render("index", { products: docs, /*product_type: doc,*/ });
         //});
     });
 });
@@ -20,8 +20,8 @@ Router.get('/index.html', function (req, res) {
 //Get specific type of product
 Router.get('/index.html/:param1', ensureAuthenticated, function (req, res, next) {
         Product.find({ _id: req.params.param1 }, function (err, docs) {
-        res.render("product_details", { product: docs, product_type: GlobalProductType, user: req.user });
-        console.log(req.params);
+            res.render("product_details", { product: docs });
+            console.log(req.params);
     });
 });
 

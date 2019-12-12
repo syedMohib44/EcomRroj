@@ -7,7 +7,7 @@ const { forwardAuthenticated } = require('../config/auth');
 
 
 Router.get('/login', forwardAuthenticated, function (req, res) {
-    res.render("user-login", { products: '', product_type: '', logged: 'login' });
+    res.render("user-login");
 });
 
 Router.get('/register', forwardAuthenticated, function (req, res) {

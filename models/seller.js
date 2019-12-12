@@ -9,8 +9,8 @@ var schema = new Schema({
     seller_cnic: {type: String, required: true },
     seller_cellno: {type: String, required: true },
     seller_address: {type: String, required: true },
-    seller_country: {type: Number, required: true },
-    seller_city: {type: Number, required: true }
+    seller_country: {type: String, required: true },
+    seller_city: {type: String, required: true }
 });
 
 module.exports = mongoose.model('Seller', schema); 

@@ -8,17 +8,15 @@ const Seller = require('../models/seller');
 const { forwardAuthenticated } = require('../config/auth');
 
 Router.get('/seller', forwardAuthenticated, function (req, res) {
-    Product_Type.find({}, null, { sort: {product_type_name:1, product_subtype_name:1, product_sub_subtype_name:1} }, function (err, doc) {
-        res.render("seller", { product_type: doc, user: req.user });
-    });
+    res.render("seller");
 });
 
 Router.get('/seller/login', forwardAuthenticated, function (req, res) {
-    res.render('seller-login', { products: '', product_type: '', logged: 'login' });
+    res.render('seller-login');
 });
 
-Router.get('/seller/register', forwardAuthenticated, function (req, res) {
-    res.render('seller-register', {user: '' , product_type: ''});
+Router.get('/seller/register', function (req, res) {
+    res.render('seller-register');
 });
 
 Router.post('/seller/register', function (req, res) {
@@ -50,7 +48,7 @@ Router.post('/seller/register', function (req, res) {
     if (errors.length > 0) {
         res.render('seller-register', { errors, seller_name, seller_email, seller_pass1, seller_pass2, seller_dob, seller_cnic, seller_country, seller_cellno, seller_address, seller_city });
     } else {
-        seller.findOne({ seller_email: req.body.seller_email }, function (err, docs) {
+        Seller.findOne({ seller_email: req.body.seller_email }, function (err, docs) {
             if (docs) {
                 errors.push({ msg: 'Email already exists' });
                 res.render('seller-register', { errors, seller_name, seller_email, seller_pass1, seller_pass2, seller_dob, seller_cnic, seller_country, seller_cellno, seller_address, seller_city });
@@ -61,11 +59,11 @@ Router.post('/seller/register', function (req, res) {
                     seller_email: req.body.seller_email,
                     seller_pass: req.body.seller_pass1,
                     seller_dob: req.body.seller_dob,
-                    seller_cnic: req.body.seller_dob,
-                    seller_cellno: req.body.seller_dob,
-                    seller_address: req.body.seller_dob,
-                    seller_country: req.body.seller_dob,
-                    seller_city: req.body.seller_dob
+                    seller_cnic: req.body.seller_cnic,
+                    seller_cellno: req.body.seller_cellno,
+                    seller_address: req.body.seller_address,
+                    seller_country: req.body.seller_country,
+                    seller_city: req.body.seller_city
                 }
                 const newseller = new Seller(seller);
 
@@ -75,7 +73,7 @@ Router.post('/seller/register', function (req, res) {
                         newseller.seller_pass = hash;
                         newseller.save();
                         req.flash('success_msg', 'You are now registered!');
-                        res.redirect('seller/login');
+                        res.redirect('/seller/login');
                     }));
             }
         });
