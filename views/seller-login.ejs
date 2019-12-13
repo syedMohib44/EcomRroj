@@ -1,72 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-	<title>Home</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/images/icons/favicon.png" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/fonts/iconic/css/material-design-iconic-font.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/fonts/linearicons-v1.0.0/icon-font.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/MagnificPopup/magnific-popup.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/perfect-scrollbar/perfect-scrollbar.css">
-	<!--===============================================================================================-->
-	<script src="/http://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/css/util.css">
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
-	<!--===============================================================================================-->
-</head>
-
-<body>
-	<header>
-		<!-- Header desktop -->
-		<div class="container-menu-desktop">
-			<!-- Topbar -->
-			<div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
-						seller Panel
-					</div>
-
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Login As seller
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="wrap-menu-desktop how-shadow1" style="top: 4%;">
-				<nav class="limiter-menu-desktop container">
-					<!-- Logo desktop -->
-					<a href="#" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
-					</a>
-				</nav>
-			</div>
-		</div>
-	</header>
+<% layout('layout') -%>
 
 	<!-- Body Section -->
 	<div class="sec-banner bg0 p-t-80 p-b-250">
@@ -77,7 +9,7 @@
 						<div style="display:inline-block; width:45%;text-align:center;">
 							<div class="bor17 of-hidden pos-relative">
 								<%- include ../partials/messages %>
-								<form id="login_form" action="/login" method="POST">
+								<form id="login_form" action="/seller/panel" method="POST">
 									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="seller name or email"
 										name="seller_email" type="text" />
 
@@ -96,9 +28,3 @@
 			</div>
 		</section>
 	</div>
-
-</body>
-<script> //TODO: click login creates 2 text boxes and on click sign up create 6-7 text boxes 
-</script>
-
-</html>
