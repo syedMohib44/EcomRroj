@@ -72,43 +72,51 @@
 	<div class="sec-banner bg0 p-t-80 p-b-250">
 		<section class="bg0 p-t-80 p-b-200">
 			<div class="flex-w flex-tr">
-			<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-			<div class="container">
-					<div style="display:inline-block; width:45%;text-align:center;">
-						<div class="bor17 of-hidden pos-relative">
-							<form id="product_form" action="/product_add" method="POST" enctype="multipart/form-data">
+				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+					<div class="container">
+						<div style="display:inline-block; width:45%;text-align:center;">
+							<div class="bor17 of-hidden pos-relative">
+								<form id="product_form" action="/product_add" method="POST"
+									enctype="multipart/form-data">
 
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product name"
-									name="product_name" type="text" />
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product name"
+										name="product_name" type="text" />
 
-								<select id="product_type" class="stext-108 cl6 plh4 size-201 p-l-50 p-r-80" name="product_type">
+									<select id="product_type" class="stext-108 cl6 plh4 size-201 p-l-50 p-r-80"
+										name="product_type">
 										<option selected="selected">Select Category</option>
-								</select>
-								<!-- <input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product type"
-									name="product_type" type="text" /> -->
+									</select>
 
-								<textarea class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" rows="4" cols="50" name="product_description" placeholder="Enter Product Description">
+									<select id="product_sub_type" class="stext-108 cl6 plh4 size-201 p-l-50 p-r-80"
+										name="product_sub_type">
+										<option selected="selected">Select Sub Category</option>
+									</select>
+									<!-- <input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product Category"
+									name="product_category" type="text" />  -->
+
+									<textarea class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" rows="4" cols="50"
+										name="product_description" placeholder="Enter Product Description">
 									Product Description...
 								</textarea>
 
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Extra Small"
-									name="product_xs" min="0" type="number" />
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Extra Small"
+										name="product_xs" min="0" type="number" />
 
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Small"
-									name="product_s" min="0" type="number" />
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Small"
+										name="product_s" min="0" type="number" />
 
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Medium"
-									name="product_m" min="0" type="number" />
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Medium"
+										name="product_m" min="0" type="number" />
 
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Large"
-									name="product_l" min="0" type="number" />
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Large"
+										name="product_l" min="0" type="number" />
 
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Extra Large"
-									name="product_xl" min="0" type="number" />
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Extra Large"
+										name="product_xl" min="0" type="number" />
 
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"placeholder="Double Extra Large"
-									name="product_xxl" min="0" type="number" />
-								<!-- <select class="stext-108 cl6 plh4 size-201 p-l-50 p-r-80" name="product_size">
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"
+										placeholder="Double Extra Large" name="product_xxl" min="0" type="number" />
+									<!-- <select class="stext-108 cl6 plh4 size-201 p-l-50 p-r-80" name="product_size">
 							<option value="XS">XS</option>
 							<option value="S">S</option>
 							<option value="M">M</option>
@@ -116,42 +124,43 @@
 							<option value="XL">XL</option>
 							<option value="XXL">XXL</option>
 						</select> -->
-								<!-- <select class="stext-108 cl6 plh4 size-201 p-l-30 p-r-48" id="select_for">
+									<!-- <select class="stext-108 cl6 plh4 size-201 p-l-30 p-r-48" id="select_for">
 							<option selected="selected">Select For</option>
 						</select> -->
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product price"
-									name="product_price" type="text" />
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product price"
+										name="product_price" type="text" />
 
-								<select id="no_of_images" class="stext-108 cl6 plh4 size-200 p-l-109 p-r-80"
-									name="image_no">
-									<!-- <option value="XS">1</option>
+									<select id="no_of_images" class="stext-108 cl6 plh4 size-200 p-l-109 p-r-80"
+										name="image_no">
+										<!-- <option value="XS">1</option>
 							<option value="S">2</option>
 							<option value="M">3</option>
 							<option value="L">4</option>
 							<option value="XL">5</option> -->
-								</select>
+									</select>
 
-								<div id="images-file" class="p-t-18">
-									<label for="files"
-										class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-5 trans-01">Select
-										Image</label>
-									<input id="files" style="visibility: hidden;" type="file" name="product_img"
-										accept="" />
-								</div>
+									<div id="images-file" class="p-t-18">
+										<label for="files"
+											class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-5 trans-01">Select
+											Image</label>
+										<input id="files" style="visibility: hidden;" type="file" name="product_img"
+											accept="" />
+									</div>
 
-								<div class="p-t-18">
-									<button class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-										Submit
-									</button>
-								</div>
-							</form>
-								
+									<div class="p-t-18">
+										<button
+											class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+											Submit
+										</button>
+									</div>
+								</form>
+
+							</div>
 						</div>
-					</div>
-					 <div style="display:inline-block; width:45%;text-align:center;">
-						<div class="bor17 of-hidden pos-relative">
-							<div class="menu-desktop">
-					<!--			<ul class="main-menu">
+						<div style="display:inline-block; width:45%;text-align:center;">
+							<div class="bor17 of-hidden pos-relative">
+								<div class="menu-desktop">
+									<!--			<ul class="main-menu">
 									<li>
 										<a href="contact.html">Add Products</a>
 									</li>
@@ -160,35 +169,39 @@
 									</select>
 								</ul>
 							</div> -->
-							<!-- enctype="multipart/form-data" -->
-							<!-- <form id = "product_type_form" action="/product_type_add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()"> -->
-							<form id="product_type_form" action="/product_type_add" method="POST"
-								enctype="multipart/form-data">
+									<!-- enctype="multipart/form-data" -->
+									<!-- <form id = "product_type_form" action="/product_type_add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()"> -->
+									<form id="product_type_form" action="/product_type_add" method="POST"
+										enctype="multipart/form-data">
 
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product Type name"
-									name="product_type_name" type="text" required />
+										<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"
+											placeholder="Product Type name" name="product_type_name" type="text"
+											required />
 
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product Subtype name"
-									name="product_subtype_name" type="text" required />
-									
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-40" placeholder="product Sub Subtype Name"
-									name="product_sub_subtype_name" type="text" required />
+										<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"
+											placeholder="Product Subtype name" name="product_subtype_name" type="text"
+											required />
 
-								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product Type Quantity"
-									name="product_type_quantity" type="text" required />
+										<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-40"
+											placeholder="product Sub Subtype Name" name="product_sub_subtype_name"
+											type="text" required />
 
-								<label id="enter_qunatity"></label> <!-- Use for manul authentication -->
+										<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"
+											placeholder="Product Type Quantity" name="product_type_quantity" type="text"
+											required />
 
-								<div class="p-b-20 p-t-10" style="padding-left: 10%;">
-									<button id="submit-btn"
-										class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-25 trans-04">Submit</button>
+										<label id="enter_qunatity"></label> <!-- Use for manul authentication -->
+
+										<div class="p-b-20 p-t-10" style="padding-left: 10%;">
+											<button id="submit-btn"
+												class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-25 trans-04">Submit</button>
+										</div>
+									</form>
 								</div>
-							</form>
-						</div>
-					</div>
+							</div>
 		</section>
 	</div>
-</div>
+	</div>
 	</div>
 
 	<!-- Footer -->
@@ -349,11 +362,28 @@
 				success: function (result) {
 					//debugger; runs debugger on console of browser.
 					for (var i = 0; i < result.length; i++) {
-						console.log(result);
-						console.log(result[i].product_type_name);
-						$("#op1").append(new Option(result[i].product_type_name));
-						$("#product_type").append(new Option(result[i].product_type_name));
-						//$("#select_for").append(new Option(result[i].product_type_name));
+						//$("#op1").append(new Option(result[i].product_type_name));
+						if (result[i].product_type_name == "-1")
+							continue;
+						for (var j = i + 1; j < result.length; j++) {
+							var temp = result[i].product_type_name;
+							if (temp == result[j].product_type_name && result[j].product_type_name != "-1") {
+								result[j].product_type_name = "-1";
+							}
+						}
+						$("#product_type").append(new Option(temp));
+					}
+
+					for (var i = 0; i < result.length; i++) {
+						if (result[i].product_subtype_name == "-1")
+							continue;
+						for (var j = i + 1; j < result.length; j++) {
+							var temp = result[i].product_subtype_name;
+							if (temp == result[j].product_subtype_name && result[j].product_subtype_name != "-1") {
+								result[j].product_subtype_name = "-1";
+							}
+						}
+						$("#product_sub_type").append(new Option(temp));
 					}
 				}
 			});

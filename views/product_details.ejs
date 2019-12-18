@@ -31,7 +31,7 @@
 						<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 						<div class="slick3 gallery-lb">
 							<% for(var j = 0; j < product[0].product_img.length; j++) {%>
-							<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+							<div class="item-slick3" data-thumb="/images/upload_images/<%=product[0].product_img[j]%>">
 								<div class="wrap-pic-w pos-relative">
 									<img src="/images/upload_images/<%=product[0].product_img[j]%>" alt="IMG-PRODUCT">
 
@@ -71,15 +71,16 @@
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-							Lightweight Jacket
+							<%=product[0].product_name%>
 						</h4>
 
 						<span class="mtext-106 cl2">
-							$58.79
+							<!-- $58.79 -->
+							<%=product[0].product_price%>
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-							Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+							<%=product[0].product_description%>
 						</p>
 						
 						<!--  -->
@@ -93,10 +94,24 @@
 									<div class="rs1-select2 bor8 bg0">
 										<select class="js-select2" name="time">
 											<option>Choose an option</option>
-											<option>Size S</option>
-											<option>Size M</option>
-											<option>Size L</option>
-											<option>Size XL</option>
+											<%if(product[0].product_XS > 0){%>
+												<option>Size XS</option>
+											<%}%>
+											<%if(product[0].product_S > 0){%>
+												<option>Size S</option>
+											<%}%>
+											<%if(product[0].product_M > 0){%>
+												<option>Size M</option>
+											<%}%>
+											<%if(product[0].product_L > 0){%>
+												<option>Size L</option>
+											<%}%>
+											<%if(product[0].product_XL > 0){%>
+												<option>Size XL</option>
+											<%}%>
+											<%if(product[0].product_XXL > 0){%>
+												<option>Size XXL</option>
+											<%}%>
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
@@ -348,7 +363,7 @@
 			</span>
 
 			<span class="stext-107 cl6 p-lr-25">
-				Categories: Jacket, Men
+				Categories: <%= product[0].product_sub_type%>, <%= product[0].product_type%>
 			</span>
 		</div>
 	</section>

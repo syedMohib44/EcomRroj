@@ -49,18 +49,19 @@ Router.post('/product_add', function (req, res) {
     //             return res.status(500).send(err);
 
     var product_data = {
-        product_name: req.body.product_name,
-        product_type: req.body.product_type,
-        product_description: req.body.product_description,
-        product_img: img_name,
-        product_XS: req.body.product_xs,
-        product_S: req.body.product_s,
-        product_M: req.body.product_m,
-        product_L: req.body.product_l,
-        product_XL: req.body.product_xl,
-        product_XXL: req.body.product_xxl,
-        //product_for: req.body.product_for,
-        product_price: req.body.product_price
+        product_name:           req.body.product_name,
+        product_type:           req.body.product_type,
+        product_sub_type:       req.body.product_sub_type,
+        product_description:    req.body.product_description,
+        product_img:            img_name,
+        product_XS:             req.body.product_xs,
+        product_S:              req.body.product_s,
+        product_M:              req.body.product_m,
+        product_L:              req.body.product_l,
+        product_XL:             req.body.product_xl,
+        product_XXL:            req.body.product_xxl,
+        //product_for:          req.body.product_for,
+        product_price:          req.body.product_price
     }
     new Product(product_data).save();
     res.redirect('./index.html');

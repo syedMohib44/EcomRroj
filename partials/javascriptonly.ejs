@@ -1,31 +1,28 @@
-
-
 <script>
-        //used in product.ejs at partials...
-        function model1(src){
-            var imgsName = src.split(',');
-            var id;
-            for (var i = 0; i < imgsName.length; i++) {
-                id = "overview-img"+i;
-                document.getElementById(id).src = "images/upload_images/" + imgsName[i];
-            }
+    //used in product.ejs at partials...
+    function model1(src) {
+        var imgsName = src.split(',');
+        var id;
+        for (var i = 0; i < imgsName.length; i++) {
+            id = "overview-img" + i;
+            document.getElementById(id).src = "images/upload_images/" + imgsName[i];
         }
-        
-        
-function OnChange(dropdown)
-{
-    var k = '';
-    var myindex  = dropdown.selectedIndex;
-    var length = dropdown.options[myindex].value;
-    document.getElementById('images-file').innerHTML = k;
-    for (var i = 0; i < length; i++) {
-        k += '<label for="files' + i + '" class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-15 trans-04">Select Image</label> <input id="files' + i + '" style="visibility: hidden;" type="file" name="desgine_img" accept="" />';
     }
-    document.getElementById('images-file').innerHTML = k;
-}
+
+
+    function OnChange(dropdown) {
+        var k = '';
+        var myindex = dropdown.selectedIndex;
+        var length = dropdown.options[myindex].value;
+        document.getElementById('images-file').innerHTML = k;
+        for (var i = 0; i < length; i++) {
+            k += '<label for="files' + i + '" class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-15 trans-04">Select Image</label> <input id="files' + i + '" style="visibility: hidden;" type="file" name="desgine_img" accept="" />';
+        }
+        document.getElementById('images-file').innerHTML = k;
+    }
 </script>
-        
-        <!-- <script>
+
+<!-- <script>
                 $(document).ready(function () {
                     $(document).click('#product_type', function(){
                     $.ajax({
@@ -42,7 +39,7 @@ function OnChange(dropdown)
                 });
                 });
             </script> -->
-        <!-- <script>
+<!-- <script>
             $(document).ready(function () {
                 $.ajax({
                     datatype: "JSON",
@@ -57,120 +54,136 @@ function OnChange(dropdown)
                 });
             });
         </script> -->
-        <!--===============================================================================================-->	
-	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-        <script src="/vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-        <script src="/vendor/bootstrap/js/popper.js"></script>
-        <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-        <script src="/vendor/select2/select2.min.js"></script>
-        <script>
-            $(".js-select2").each(function(){
-                $(this).select2({
-                    minimumResultsForSearch: 20,
-                    dropdownParent: $(this).next('.dropDownSelect2')
-                });
-            })
-        </script>
-    <!--===============================================================================================-->
-        <script src="/vendor/daterangepicker/moment.min.js"></script>
-        <script src="/vendor/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-        <script src="/vendor/slick/slick.min.js"></script>
-        <script src="/js/slick-custom.js"></script>
-    <!--===============================================================================================-->
-        <script src="/vendor/parallax100/parallax100.js"></script>
-        <script>
-            $('.parallax100').parallax100();
-        </script>
-    <!--===============================================================================================-->
-        <script src="/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-        <script>
-            $('.gallery-lb').each(function() { // the containers for all your galleries
-                $(this).magnificPopup({
-                    delegate: 'a', // the selector for gallery item
-                    type: 'image',
-                    gallery: {
-                        enabled:true
-                    },
-                    mainClass: 'mfp-fade'
-                });
-            });
-        </script>
-    <!--===============================================================================================-->
-        <script src="/vendor/isotope/isotope.pkgd.min.js"></script>
-    <!--===============================================================================================-->
-        <script src="/vendor/sweetalert/sweetalert.min.js"></script>
-        <script>
-            $('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
-                e.preventDefault();
-            });
-            //var favArray = [];
-            $('.js-addwish-b2').each(function(){
-                //var i = 0;
-                var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-                $(this).on('click', function(){
-                    swal(nameProduct, "is added to wishlist !", "success");
-                    
-                    // while(i < favArray.length){
-                    //     if(favArray[i] == nameProduct){
-                    //         console.log("yeah");
-                    //         $(this).addClass('');
-                    //         return;
-                    //     }                                                Later update on fav image need to disable it on clicking again...
-                    //     i++;
-                    // }
-                    // favArray.push(nameProduct);
-    
-                    $(this).addClass('js-addedwish-b2');
-                    $(this).off('click');
-                });
-            });
-            
-        // 	$('#over-view').on('click', function(){
-        // 		console.log($('#img-overview').attr('src'));
-        // 	$('overview-img').append('<img src='+$('#img-overview').attr('src')+' alt="CLOSE">');
-        // });
-    
-            $('.js-addwish-detail').each(function(){
-                var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-    
-                $(this).on('click', function(){
-                    swal(nameProduct, "is added to wishlist !", "success");
-    
-                    $(this).addClass('js-addedwish-detail');
-                    $(this).off('click');
-                });
-            });
-    
-            /*---------------------------------------------*/
-    
-            $('.js-addcart-detail').each(function(){
-                var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-                $(this).on('click', function(){
-                    swal(nameProduct, "is added to cart !", "success");
-                });
-            });
-        
-        </script>
-    <!--===============================================================================================-->
-        <script src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-        <script>
-            $('.js-pscroll').each(function(){
-                $(this).css('position','relative');
-                $(this).css('overflow','hidden');
-                var ps = new PerfectScrollbar(this, {
-                    wheelSpeed: 1,
-                    scrollingThreshold: 1000,
-                    wheelPropagation: false,
-                });
-    
-                $(window).on('resize', function(){
-                    ps.update();
-                })
-            });
-        </script>
-    <!--===============================================================================================-->
-        <script src="/js/main.js"></script>
+<!--===============================================================================================-->
+<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="/vendor/bootstrap/js/popper.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="/vendor/select2/select2.min.js"></script>
+<script>
+    $(".js-select2").each(function () {
+        $(this).select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $(this).next('.dropDownSelect2')
+        });
+    })
+</script>
+<!--===============================================================================================-->
+<script src="/vendor/daterangepicker/moment.min.js"></script>
+<script src="/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="/vendor/slick/slick.min.js"></script>
+<script src="/js/slick-custom.js"></script>
+<!--===============================================================================================-->
+<script src="/vendor/parallax100/parallax100.js"></script>
+<script>
+    $('.parallax100').parallax100();
+</script>
+<!--===============================================================================================-->
+<script src="/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<script>
+    $('.gallery-lb').each(function () { // the containers for all your galleries
+        $(this).magnificPopup({
+            delegate: 'a', // the selector for gallery item
+            type: 'image',
+            gallery: {
+                enabled: true
+            },
+            mainClass: 'mfp-fade'
+        });
+    });
+</script>
+<!--===============================================================================================-->
+<script src="/vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+<script src="/vendor/sweetalert/sweetalert.min.js"></script>
+<script>
+    $('.js-addwish-b2, .js-addwish-detail').on('click', function (e) {
+        e.preventDefault();
+    });
+    //var favArray = [];
+    $('.js-addwish-b2').each(function () {
+        //var i = 0;
+        var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+        $(this).on('click', function () {
+            swal(nameProduct, "is added to wishlist !", "success");
+
+            // while(i < favArray.length){
+            //     if(favArray[i] == nameProduct){
+            //         console.log("yeah");
+            //         $(this).addClass('');
+            //         return;
+            //     }                                                Later update on fav image need to disable it on clicking again...
+            //     i++;
+            // }
+            // favArray.push(nameProduct);
+
+            $(this).addClass('js-addedwish-b2');
+            $(this).off('click');
+        });
+    });
+
+    // 	$('#over-view').on('click', function(){
+    // 		console.log($('#img-overview').attr('src'));
+    // 	$('overview-img').append('<img src='+$('#img-overview').attr('src')+' alt="CLOSE">');
+    // });
+
+    $('.js-addwish-detail').each(function () {
+        var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+        $(this).on('click', function () {
+            swal(nameProduct, "is added to wishlist !", "success");
+
+            $(this).addClass('js-addedwish-detail');
+            $(this).off('click');
+        });
+    });
+
+    /*---------------------------------------------*/
+
+    $('.js-addcart-detail').each(function () {
+        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+        $(this).on('click', function () {
+            swal(nameProduct, "is added to cart !", "success");
+        });
+    });
+
+</script>
+<!--===============================================================================================-->
+<script src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>
+    $('.js-pscroll').each(function () {
+        $(this).css('position', 'relative');
+        $(this).css('overflow', 'hidden');
+        var ps = new PerfectScrollbar(this, {
+            wheelSpeed: 1,
+            scrollingThreshold: 1000,
+            wheelPropagation: false,
+        });
+
+        $(window).on('resize', function () {
+            ps.update();
+        })
+    });
+</script>
+<!--===============================================================================================-->
+<script src="/js/main.js"></script>
+
+<!-- <script> used in seller panel
+	$(document).ready(function () {
+		$('#op1').change(function () {
+			var k = '';
+			var d = $('#piece');
+			d.html('');
+			var totalImgs = $('#op1 option:selected').val();
+			for (var i = 1; i <= totalImgs; i++) {
+				k += '<select class="form-control" id="piece"> <option value="Kameez">Kameez</option> <option value="Duppata">Duppata</option> <option selected="Shalwar">Shalwar</option></select>';
+				console.log($(k + "asdff"));
+			}
+			d.html(k);
+		});
+	});
+</script> -->
