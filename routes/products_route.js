@@ -41,6 +41,13 @@ Router.post('/product_add', function (req, res) {
             return res.status(500).send(err);
     }
 
+    var colors = req.body.product_colors;
+    var product_colors = [];
+    for (var i = 0; i < colors.length; i++) {
+        if(colors[i] != " " || colors[i] != '' || colors[i] != null || colors[i] != 'undefined'){
+            product_colors.push(colors[i]);
+        }
+    }
     //var file = req.files.product_img;
 
     // if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
@@ -54,12 +61,14 @@ Router.post('/product_add', function (req, res) {
         product_sub_type:       req.body.product_sub_type,
         product_description:    req.body.product_description,
         product_img:            img_name,
+        product_material:       req.body.product_material,
         product_XS:             req.body.product_xs,
         product_S:              req.body.product_s,
         product_M:              req.body.product_m,
         product_L:              req.body.product_l,
         product_XL:             req.body.product_xl,
         product_XXL:            req.body.product_xxl,
+        product_colors:         product_colors,
         //product_for:          req.body.product_for,
         product_price:          req.body.product_price
     }

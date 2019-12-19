@@ -1,5 +1,5 @@
 <% layout('layout') -%>
-
+<% var size_availabel = false%>
 <!-- breadcrumb -->
 <div class="container">
 	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -95,21 +95,27 @@
 										<select class="js-select2" name="time">
 											<option>Choose an option</option>
 											<%if(product[0].product_XS > 0){%>
+												<% size_availabel = true %>
 												<option>Size XS</option>
 											<%}%>
 											<%if(product[0].product_S > 0){%>
+												<% size_availabel = true %>
 												<option>Size S</option>
 											<%}%>
 											<%if(product[0].product_M > 0){%>
+												<% size_availabel = true %>
 												<option>Size M</option>
 											<%}%>
 											<%if(product[0].product_L > 0){%>
+												<% size_availabel = true %>
 												<option>Size L</option>
 											<%}%>
 											<%if(product[0].product_XL > 0){%>
+												<% size_availabel = true %>
 												<option>Size XL</option>
 											<%}%>
 											<%if(product[0].product_XXL > 0){%>
+												<% size_availabel = true %>
 												<option>Size XXL</option>
 											<%}%>
 										</select>
@@ -236,25 +242,31 @@
 											</span>
 										</li>
 
+										<% if(product[0].product_material != ''){%>
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
 												Materials
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												60% cotton
+												<%= product[0].product_material %>
 											</span>
 										</li>
+										<%}%>
 
+										<% if(product[0].product_colors.length > 0){%>
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
 												Color
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												Black, Blue, Grey, Green, Red, White
+												<%for(var i = 0; i < product[0].product_colors.length; i++){%>
+													<%=product[0].product_colors[i]%>
+												<%}%>
 											</span>
 										</li>
+										<%}%>
 
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">

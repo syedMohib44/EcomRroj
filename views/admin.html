@@ -97,7 +97,24 @@
 									<textarea class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" rows="4" cols="50"
 										name="product_description" placeholder="Enter Product Description">
 									Product Description...
-								</textarea>
+									</textarea>
+
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"
+										placeholder="Product Material" name="product_material" type="text" />
+
+									<select id="no_of_colors" class="stext-108 cl6 plh4 size-200 p-l-109 p-r-80"
+										name="image_no">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+
+									<div id="colors">
+										<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"
+											placeholder="Product Colors" name="product_colors" type="text" />
+									</div>
 
 									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Extra Small"
 										name="product_xs" min="0" type="number" />
@@ -398,23 +415,38 @@
 				return false;
 			}
 		}
+
 		$(document).ready(function () {
-			for (let i = 1; i <= 5; i++) {
-				console.log('<option value=' + i + '>' + i + '</option>');
-				$('#no_of_images').append('<option value=' + i + '>' + i + '</option>');
-			}
-			$('#no_of_images').change(function () {
+			$('#no_of_colors').change(function () {
 				var k = '';
-				var d = $('#images-file');
+				var d = $('#colors');
 				d.html('');
-				var totalImgs = $('#no_of_images option:selected').val();
-				for (var i = 1; i <= totalImgs; i++) {
-					k += '<label for="files' + i + '" class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-15 trans-04">Select Image</label> <input id="files' + i + '" style="visibility: hidden;" type="file" name="product_img" accept="" />';
+				var totalColors = $('#no_of_colors option:selected').val();
+				for (var i = 1; i <= totalColors; i++) {
+					k += '<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product Colors" name="product_colors" type="text" />';
 					console.log($(k + "asdff"));
 				}
 				d.html(k);
 			});
 		});
+
+			$(document).ready(function () {
+				for (let i = 1; i <= 5; i++) {
+					console.log('<option value=' + i + '>' + i + '</option>');
+					$('#no_of_images').append('<option value=' + i + '>' + i + '</option>');
+				}
+				$('#no_of_images').change(function () {
+					var k = '';
+					var d = $('#images-file');
+					d.html('');
+					var totalImgs = $('#no_of_images option:selected').val();
+					for (var i = 1; i <= totalImgs; i++) {
+						k += '<label for="files' + i + '" class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-15 trans-04">Select Image</label> <input id="files' + i + '" style="visibility: hidden;" type="file" name="product_img" accept="" />';
+						console.log($(k + "asdff"));
+					}
+					d.html(k);
+				});
+			});
 	</script>
 </body>
 

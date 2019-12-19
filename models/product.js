@@ -9,12 +9,14 @@ var schema = new Schema({
     product_description: {type: String, required: true },
     //product_img: {type: String, required: true },
     product_img: {type: Array, required: true }, //need to store image of product in an array...
-    product_XS: {type: Number, required: true },
-    product_S: {type: Number, required: true },
-    product_M: {type: Number, required: true },
-    product_L: {type: Number, required: true },
-    product_XL: {type: Number, required: true },
-    product_XXL: {type: Number, required: true },
+    product_material: {type: String, required: false},
+    product_XS: {type: Number, required: false },
+    product_S: {type: Number, required: false },
+    product_M: {type: Number, required: false },
+    product_L: {type: Number, required: false },
+    product_XL: {type: Number, required: false },
+    product_XXL: {type: Number, required: false },
+    product_colors: {type: Array, required: true },
     product_price: {type: Number, required: true },
 });
 

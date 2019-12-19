@@ -9,7 +9,15 @@ const { ensureAuthenticated } = require('../config/auth');
 //Get home page
 
 Router.post('/seller/panel', function (req, res) {
-    res.render("seller-panel");
+    res.render("seller-panel-options");
+});
+
+Router.get('/seller/panel/clothes', function (req, res) {
+    res.render("seller-panel-cloth");
+});
+
+Router.get('/seller/panel/others', function (req, res) {
+    res.render("seller-panel-others");
 });
 
 module.exports = Router;

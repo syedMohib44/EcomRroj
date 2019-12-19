@@ -1,0 +1,165 @@
+<% layout('layout') -%>
+
+<!-- Body Section -->
+<div class="sec-banner bg0 p-t-80 p-b-250">
+	<section class="bg0 p-t-80 p-b-200">
+		<div class="flex-w flex-tr">
+			<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+				<div class="container">
+					<div style="display:inline-block; width:45%;text-align:center;">
+						<div class="bor17 of-hidden pos-relative">
+							<form id="product_form" action="/product_add" method="POST" enctype="multipart/form-data">
+
+								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product name"
+									name="product_name" type="text" />
+
+								<select id="product_type" class="stext-108 cl6 plh4 size-201 p-l-50 p-r-80"
+									name="product_type">
+									<option selected="selected">Select Category</option>
+								</select>
+								<!-- <input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product type"
+									name="product_type" type="text" /> -->
+
+								<textarea class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" rows="4" cols="50"
+									name="product_description" placeholder="Enter Product Description">
+									Product Description...
+								</textarea>
+
+								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Extra Small"
+									name="product_xs" min="0" type="number" />
+
+								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Small"
+									name="product_s" min="0" type="number" />
+
+								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Medium"
+									name="product_m" min="0" type="number" />
+
+								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Large"
+									name="product_l" min="0" type="number" />
+
+								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Extra Large"
+									name="product_xl" min="0" type="number" />
+
+								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"
+									placeholder="Double Extra Large" name="product_xxl" min="0" type="number" />
+								<!-- <select class="stext-108 cl6 plh4 size-201 p-l-50 p-r-80" name="product_size">
+							<option value="XS">XS</option>
+							<option value="S">S</option>
+							<option value="M">M</option>
+							<option value="L">L</option>
+							<option value="XL">XL</option>
+							<option value="XXL">XXL</option>
+						</select> -->
+								<!-- <select class="stext-108 cl6 plh4 size-201 p-l-30 p-r-48" id="select_for">
+							<option selected="selected">Select For</option>
+						</select> -->
+								<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Product price"
+									name="product_price" type="text" />
+
+								<select id="no_of_images" class="stext-108 cl6 plh4 size-200 p-l-109 p-r-80"
+									name="image_no">
+									<!-- <option value="XS">1</option>
+							<option value="S">2</option>
+							<option value="M">3</option>
+							<option value="L">4</option>
+							<option value="XL">5</option> -->
+								</select>
+
+								<div id="images-file" class="p-t-18">
+									<label for="files"
+										class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-5 trans-01">Select
+										Image</label>
+									<input id="files" style="visibility: hidden;" type="file" name="product_img"
+										accept="" />
+								</div>
+
+								<div class="p-t-18">
+									<button class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+										Submit
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div style="display:inline-block; width:50%; text-align:center;">
+						<div class="bor17n of-hidden pos-relative">
+							<div class="menu-desktop">
+								<!--			<ul class="main-menu">
+									<li>
+										<a href="contact.html">Add Products</a>
+									</li>
+									<select class="form-control" id="op1">
+										<option selected="selected">Select</option>
+									</select>
+								</ul>
+							</div> -->
+								<!-- enctype="multipart/form-data" -->
+								<!-- <form id = "product_type_form" action="/product_type_add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()"> -->
+								<form id="product_form" action="/product_add" method="POST"
+									enctype="multipart/form-data">
+
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Cloth Name"
+										name="cloth_name" type="text" />
+
+									<select id="no_of_images" class="stext-108 cl6 plh4 size-200 p-l-109 p-r-80"
+										name="image_no">
+										<option selected="">Cotton</option>
+										<option selected="">Linen</option>
+										<option selected="">Chiffon</option>
+										<option selected="">Khaddar</option>
+										<option selected="">Lawn</option>
+										<option selected="">Silk</option>
+										<option selected="">Chicken</option>
+									</select>
+
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"
+										placeholder="Cloth Description" name="cloth_desciption" type="text" />
+
+									<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" placeholder="Cloth Piece"
+										name="cloth_piece" type="text" />
+
+									<div id="images-file1" class="p-t-18">
+										<label for="files"
+											class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-5 trans-01">Select
+											Image1</label>
+										<input id="files" style="visibility: hidden;" type="file" name="product_img"
+											accept="" />
+									</div>
+
+									<div id="images-file2" class="p-t-18">
+										<label for="files"
+											class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-5 trans-01">Select
+											Image2</label>
+										<input id="files" style="visibility: hidden;" type="file" name="product_img"
+											accept="" />
+									</div>
+
+									<div id="images-file3" class="p-t-18">
+										<label for="files"
+											class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-5 trans-01">Select
+											Image3</label>
+										<input id="files" style="visibility: hidden;" type="file" name="product_img"
+											accept="" />
+									</div>
+
+									<!-- <select class="form-control" id="op1">
+											<option value="3">3 Piece</option>
+											<option value="2">2 Piece</option>
+											<option selected="1">1 Piece</option>
+										</select>
+
+										<div id='piece'>
+										<select class="form-control" id="pp">
+											<option value="Kameez">Kameez</option>
+											<option value="Duppata">Duppata</option>
+											<option selected="Shalwar">Shalwar</option>
+										</select>
+									</div> -->
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+</div>
