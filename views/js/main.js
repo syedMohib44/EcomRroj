@@ -224,6 +224,23 @@
         $(this).prev().val(numProduct + 1);
     });
 
+    // $('.btn-num-product-down').on('click', function(){
+    //     var numProduct = Number($(this).next().val());
+    //     var price = $("#item-total").text(); 
+    //     var total = Number(price) / numProduct;
+    //     if(numProduct > 1) $(this).next().val(numProduct - 1);
+    //     $("#item-total").text(total);
+    // });
+
+    // $('.btn-num-product-up').on('click', function(){
+    //     var numProduct = Number($(this).prev().val());
+    //     var qnty = numProduct + 1;
+    //     $(this).prev().val(qnty);
+    //     var price = $("#item-total").text(); 
+    //     var total = price * qnty;
+    //     $("#item-total").text(total);
+    // });
+
     /*==================================================================
     [ Rating ]*/
     $('.wrap-rating').each(function(){

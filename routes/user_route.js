@@ -3,6 +3,8 @@ const Router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const User = require('../models/user');
+const Cart = require('../models/cart');
+
 const { forwardAuthenticated } = require('../config/auth');
 
 
@@ -13,7 +15,7 @@ Router.get('/login', forwardAuthenticated, function (req, res) {
 Router.get('/register', forwardAuthenticated, function (req, res) {
     res.render("user-register");
 });
-
+    
 //Previos Authentication
 // Router.post('/login', function (req, res) {
 //     User.find(function (err, docs) {
@@ -69,12 +71,22 @@ Router.post('/register', function (req, res) {
                         if (err) throw err;
                         newUser.user_pass = hash;
                         newUser.save();
+                        //req.flash('success_msg', 'You are now registered!');
+                        //res.redirect('/login');
+                }));
+                const cart = new Cart();
+                cart.owner = newUser._id;
+                cart.save(function(err) {
+                    req.logIn(newUser, function(err){
+                        if(err) return next(err);
                         req.flash('success_msg', 'You are now registered!');
                         res.redirect('/login');
-                    }));
+                    })
+                })
             }
         });
     }
+
 });
 
 //Now Authentication

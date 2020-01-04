@@ -11,7 +11,8 @@ var schema = new Schema({
     thigh: {type: Number, required: true },
     leg: {type: Number, required: true },
     hips: {type: Number, required: true },
-    desgine_img: {type: Array, required: true }
+    description: {type: String, required: true},
+    design_img: {type: Array, required: true }
 });
 
 module.exports = mongoose.model('Custom_Measurement', schema); 

@@ -30,10 +30,10 @@
 						<div class="wrap-slick3-dots"></div>
 						<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 						<div class="slick3 gallery-lb">
-							<% for(var j = 0; j < product[0].product_img.length; j++) {%>
-							<div class="item-slick3" data-thumb="/images/upload_images/<%=product[0].product_img[j]%>">
+							<% for(var j = 0; j < product.product_img.length; j++) {%>
+							<div class="item-slick3" data-thumb="/images/upload_images/<%=product.product_img[j]%>">
 								<div class="wrap-pic-w pos-relative">
-									<img src="/images/upload_images/<%=product[0].product_img[j]%>" alt="IMG-PRODUCT">
+									<img src="/images/upload_images/<%=product.product_img[j]%>" alt="IMG-PRODUCT">
 
 									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
 										href="images/product-detail-01.jpg">
@@ -71,16 +71,16 @@
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-							<%=product[0].product_name%>
+							<%=product.product_name%>
 						</h4>
 
 						<span class="mtext-106 cl2">
 							<!-- $58.79 -->
-							<%=product[0].product_price%>
+							<%=product.product_price%>
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-							<%=product[0].product_description%>
+							<%=product.product_description%>
 						</p>
 						
 						<!--  -->
@@ -94,27 +94,27 @@
 									<div class="rs1-select2 bor8 bg0">
 										<select class="js-select2" name="time">
 											<option>Choose an option</option>
-											<%if(product[0].product_XS > 0){%>
+											<%if(product.product_XS > 0){%>
 												<% size_availabel = true %>
 												<option>Size XS</option>
 											<%}%>
-											<%if(product[0].product_S > 0){%>
+											<%if(product.product_S > 0){%>
 												<% size_availabel = true %>
 												<option>Size S</option>
 											<%}%>
-											<%if(product[0].product_M > 0){%>
+											<%if(product.product_M > 0){%>
 												<% size_availabel = true %>
 												<option>Size M</option>
 											<%}%>
-											<%if(product[0].product_L > 0){%>
+											<%if(product.product_L > 0){%>
 												<% size_availabel = true %>
 												<option>Size L</option>
 											<%}%>
-											<%if(product[0].product_XL > 0){%>
+											<%if(product.product_XL > 0){%>
 												<% size_availabel = true %>
 												<option>Size XL</option>
 											<%}%>
-											<%if(product[0].product_XXL > 0){%>
+											<%if(product.product_XXL > 0){%>
 												<% size_availabel = true %>
 												<option>Size XXL</option>
 											<%}%>
@@ -143,6 +143,7 @@
 								</div>
 							</div>
 
+							<form action="" method="POST">
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
 									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
@@ -150,18 +151,27 @@
 											<i class="fs-16 zmdi zmdi-minus"></i>
 										</div>
 
-										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+										<input class="mtext-104 cl3 txt-center num-product" type="number" name="quantity" value="1">
 
 										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-plus"></i>
 										</div>
 									</div>
 
-									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+									<div class="form-group"> 
+										<input type="hidden" name="product_id" id="quantity" value="<%= product._id %>">
+										<input type="hidden" name="priceHidden" id="priceHidden" class="form-control" value="<%= product.product_price %>">
+										<b>Product Name:</b>
+										<input type="text" name="item" class="form-control" value="<%= product.product_name %>" readonly>
+										<b>Total (p):</b> <input type="text" name="priceValue" id="priceValue" class="form-control" value="<%= product.product_price %>" readonly>
+									</div>
+
+									<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										Add to cart
 									</button>
 								</div>
-							</div>	
+							</div>
+						</form>	
 						</div>
 
 						<!--  -->
@@ -242,27 +252,27 @@
 											</span>
 										</li>
 
-										<% if(product[0].product_material != ''){%>
+										<% if(product.product_material != ''){%>
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
 												Materials
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												<%= product[0].product_material %>
+												<%= product.product_material %>
 											</span>
 										</li>
 										<%}%>
 
-										<% if(product[0].product_colors.length > 0){%>
+										<% if(product.product_colors.length > 0){%>
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
 												Color
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												<%for(var i = 0; i < product[0].product_colors.length; i++){%>
-													<%=product[0].product_colors[i]%>
+												<%for(var i = 0; i < product.product_colors.length; i++){%>
+													<%=product.product_colors[i]%>
 												<%}%>
 											</span>
 										</li>
@@ -375,7 +385,7 @@
 			</span>
 
 			<span class="stext-107 cl6 p-lr-25">
-				Categories: <%= product[0].product_sub_type%>, <%= product[0].product_type%>
+				Categories: <%= product.product_sub_type%>, <%= product.product_type%>
 			</span>
 		</div>
 	</section>

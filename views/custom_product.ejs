@@ -1,6 +1,7 @@
 <% layout('layout') -%>
 
 <!-- Cart -->
+<!-- 
 <div class="wrap-header-cart js-panel-cart">
 	<div class="s-full js-hide-cart"></div>
 
@@ -85,7 +86,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 
 <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-02.jpg');">
@@ -116,6 +117,8 @@
 		<!-- Need to make image fields static because it can be hackable... -->
 		<select onchange="OnChange(this.form.image_no)" class="stext-108 cl6 plh4 size-200 p-l-109 p-r-80"
 			name="image_no">
+			<option value="1">1</option>
+			<option value="2">2</option>
 			<option value="3">3</option>
 			<option value="4">4</option>
 			<option value="5">5</option>
@@ -124,16 +127,18 @@
 		<div id="images-file" class="p-t-18">
 			<label for="files" class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-5 trans-01">Select
 				Image</label>
-			<input id="files" style="visibility: hidden;" type="file" name="desgine_img" accept="" />
+			<input id="files" style="visibility: hidden;" type="file" name="design_img" accept="" />
+			<!-- 
+			<label for="files" class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-5 trans-01">Select
+				Image</label>
+			<input id="files" style="visibility: hidden;" type="file" name="design_img" accept="" />
 
 			<label for="files" class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-5 trans-01">Select
 				Image</label>
-			<input id="files" style="visibility: hidden;" type="file" name="desgine_img" accept="" />
-
-			<label for="files" class="flex-c-m stext-101 cl0 size-201 bg1 bor1 hov-btn2 p-lr-5 trans-01">Select
-				Image</label>
-			<input id="files" style="visibility: hidden;" type="file" name="desgine_img" accept="" />
+			<input id="files" style="visibility: hidden;" type="file" name="design_img" accept="" /> -->
 		</div>
+		
+		<textarea class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" rows="4" cols="50" name="description" placeholder="Enter Product Description..."></textarea>
 
 		<div class="p-b-20 p-t-10" style="padding-left: 10%;">
 			<button id="submit-btn"
