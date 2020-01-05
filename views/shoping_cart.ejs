@@ -30,43 +30,42 @@
 								<th class="column-4">Quantity</th>
 								<th class="column-5">Total</th>
 							</tr>
-
-							<% for(var i = 0; i < cart.items.length; i++){%>
-							<div id="<%=i%>">
-								<tr class="table_row">
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="/images/upload_images/<%=cart.items[i].item.product_img[0]%>"
-												alt="IMG">
-										</div>
-									</td>
-
-									<td class="column-2"><%= cart.items[i].item.product_name %></td>
-									<td class="column-3" name="price">$ <%= cart.items[i].item.product_price %></td>
-									<td class="column-4">
-										<daiv class="wrap-num-product flex-w m-l-auto m-r-0">
-
-											<!-- TODO: Seperate logic of front end and back end by just transferring the qunatity -->
-											<a class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
-												onclick="ItemTotalMinus('item-text<%=i%>', 'item-total<%=i%>', '<%= cart.items[i].item.product_price %>')">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</a>
-
-											<input id="item-text<%=i%>" class="mtext-104 cl3 txt-center num-product"
-												type="number" name="num-product1" value="1" readonly>
-
-
-											<a href="/plus_qnty/<%= cart.items[i].id %>" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</a>
-
-							</div>
-							</td>
-							<td id="item-total<%=i%>" class="column-5"><%= cart.items[i].item.product_price %></td>
-							</tr>
 					</div>
-					<%}%>
 
+					<% for(var i = 0; i < cart.items.length; i++){%>
+					<div id="<%=i%>">
+						<tr class="table_row">
+							<td class="column-1">
+								<div class="how-itemcart1">
+									<img src="/images/upload_images/<%=cart.items[i].item.product_img[0]%>" alt="IMG">
+								</div>
+							</td>
+
+							<td class="column-2"><%= cart.items[i].item.product_name %></td>
+							<td class="column-3" name="price">$ <%= cart.items[i].item.product_price %></td>
+							<td class="column-4">
+								<daiv class="wrap-num-product flex-w m-l-auto m-r-0">
+
+									<!-- TODO: Seperate logic of front end and back end by just transferring the qunatity -->
+									<a class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
+										onclick="ItemTotalMinus('item-text<%=i%>', 'item-total<%=i%>', '<%= cart.items[i].item.product_price %>')">
+										<i class="fs-16 zmdi zmdi-minus"></i>
+									</a>
+
+									<input class="mtext-104 cl3 txt-center num-product" type="number"
+										name="product<%=i%>" value="<%=cart.items[i].quantity%>">
+
+									<a href="/plus_qnty/<%= cart.items[i].id %>"
+										class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+										<i class="fs-16 zmdi zmdi-plus"></i>
+									</a>
+								</daiv>
+							</td>
+					</div>
+					<td id="item-total<%=i%>" class="column-5">$ <%= cart.items[i].price%></td>
+
+					<%}%>
+								
 							<tr class="table_row">
 								<td class="column-1">
 									<div class="how-itemcart1">
@@ -128,7 +127,7 @@
 
 						<div class="size-209">
 							<span class="mtext-110 cl2">
-								$79.65
+								<%=cart.total%>
 							</span>
 						</div>
 					</div>
@@ -154,8 +153,12 @@
 								<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
 									<select class="js-select2" name="time">
 										<option>Select a country...</option>
-										<option>USA</option>
+										<option>Bangladesh</option>
+										<option>China</option>
+										<option>Pakistan</option>
+										<option>UAE</option>
 										<option>UK</option>
+										<option>USA</option>
 									</select>
 									<div class="dropDownSelect2"></div>
 								</div>

@@ -86,8 +86,14 @@ Router.post('/register', function (req, res) {
             }
         });
     }
-
 });
+
+router.get('/auth/facebook', passport.authenticate('facebook', {scope: 'user_email'}));
+
+router.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/index.html',
+    failureRedirect: '/login'
+}));
 
 //Now Authentication
 Router.post('/login', function (req, res, next) {

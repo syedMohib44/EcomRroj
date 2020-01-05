@@ -12,9 +12,7 @@ var GlobalCart = null;
 
 Router.get('/index.html', function (req, res) {
     Product.find(function (err, docs) {
-        //Product_Type.find({}, null, { sort: {product_type_name:1, product_subtype_name:1, product_sub_subtype_name:1} }, function (err, doc) {
-        res.render("index", { products: docs, /*product_type: doc,*/ });
-        //});
+        res.render("index", { products: docs });
     });
 });
 
@@ -23,7 +21,7 @@ Router.get('/index.html/:param1', ensureAuthenticated, function (req, res, next)
     Product.findOne({ _id: req.params.param1 }, function (err, docs) {
         res.render("product_details", { product: docs });
     });
-});
+}); 
 
 Router.get('/my_cart', function (req, res, next) {
     Cart.findOne({ owner: req.user._id })
@@ -70,21 +68,12 @@ Router.get('/plus_qnty/:param1', function (req, res, next) {
                 GlobalCart.price = GlobalCart.quantity * GlobalCart.item.product_price;
                 console.log(GlobalCart);
                 docs.items[i] = GlobalCart;
+                docs.total += GlobalCart.item.product_price;
                 break;
             }            
         }
         docs.save();
         res.redirect('/my_cart');
-        //var v = docs.items.pull(String(req.params.param1));
-        //docs.quantity += 1;
-        //docs.total += docs.price;
-
-        // docs.save(function (err){
-        //     if (err) return next(err);
-        //     return res.redirect('/index.html');
-        // });
-        //docs.quantity = docs.quantity
-        //docs.total = (docs.total + parseFloat(req.body.price)).toFixed(2);
     });
 });
 

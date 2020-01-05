@@ -59,23 +59,8 @@ app.use((req, res, next) => {
     });
 });
 
-app.use((req, res, next) => {
-    res.locals.user = req.user;
-    next();
-});
-
 app.use('/', products, products_types, users, seller, custome_products, seller_products);
 
-app.post('/form', function (req, res) {
-    var name = req.body.Name;
-    console.log(name);
-    var sql = "Update person set ?";
-    db.query(sql, req, function (error, result) {
-
-        if (error) console.log('error update' + error);
-        else console.log('Post query Successful');
-    });
-});
 
 app.listen('28017', () => {
     console.log('Server started on port 28017');
