@@ -57,14 +57,14 @@ Router.post('/register', function (req, res) {
                 res.render('user-register', { errors, user_name, user_email, user_pass1, user_pass2 });
             }
             else {
-                var user = {
-                    user_name: req.body.user_name,
-                    user_email: req.body.user_email,
-                    user_pass: req.body.user_pass1,
-                    user_dob: req.body.user_dob,
-                    user_vcode: req.body.user_vcode,
-                }
-                const newUser = new User(user);
+                const newUser = new User();
+                newUser.user_name = req.body.user_name;
+                newUser.user_email = req.body.user_email;
+                newUser.user_pass = req.body.user_pass1;
+                newUser.user_picture = newUser.gravatar();
+                newUser.user_address = req.body.user_address;
+                newUser.user_dob = req.body.user_dob;
+                newUser.user_vcode = req.body.user_vcode;
 
                 bcrypt.genSalt(10, (err, salt) =>
                     bcrypt.hash(newUser.user_pass, salt, (err, hash) => {
@@ -88,9 +88,9 @@ Router.post('/register', function (req, res) {
     }
 });
 
-router.get('/auth/facebook', passport.authenticate('facebook', {scope: 'user_email'}));
+Router.get('/auth/facebook', passport.authenticate('facebook', {scope: 'user_email'}));
 
-router.get('/auth/facebook/callback', passport.authenticate('facebook', {
+Router.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/index.html',
     failureRedirect: '/login'
 }));

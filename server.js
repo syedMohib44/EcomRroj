@@ -7,6 +7,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const Product_Type = require('./models/product_type');
+const Cart = require('./models/cart');
 
 app.engine('ejs', require('ejs-locals'));
 require('./config/passport')(passport);
@@ -49,6 +50,16 @@ const seller_products = require('./routes/seller_product_route');
 
 app.use((req, res, next) => {
     res.locals.user = req.user;
+    console.log(req.user);
+    if(req.user){
+    Cart.findOne({ owner: req.user._id }, (err, cart) => {
+        var quantity = 0;
+        for (var i = 0; i < cart.items.length; i++) {
+            quantity += cart.items[i].quantity;
+        }
+        res.locals.my_cart_items = quantity;
+    });
+}
     next();
 });
 

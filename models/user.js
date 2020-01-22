@@ -5,7 +5,9 @@ const schema = new Schema({
     user_name: {type: String, required: true },
     user_email: {type: String, required: true },
     user_pass: {type: String, required: true },
+    user_picture: {type: String, required: false, default: ''},
     facebook: {type: String, required: false },
+    tokens: Array,
     user_address: {type: String, required: true },
     user_dob: {type: Date, default: Date.now, required: true },
     history: [{

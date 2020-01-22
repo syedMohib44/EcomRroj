@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
 Router.use(fileUpload());
 const { ensureAuthenticated } = require('../config/auth');
+
 var GlobalCart = null;
 //Get home page
 
@@ -62,10 +63,11 @@ Router.get('/plus_qnty/:param1', function (req, res, next) {
     Cart.findOne({ owner: req.user._id}).populate('items.item').exec(function (err, docs) {
         console.log(docs);
         for (var i = 0; i < docs.items.length; i++) {
-            if(req.params.param1 == docs.items[i]._id){
+            if(req.params.param1 == docs.items[i]._id && docs.items[i].item.product_quantity != 0){
                 GlobalCart = docs.items[i];
                 GlobalCart.quantity += 1;
                 GlobalCart.price = GlobalCart.quantity * GlobalCart.item.product_price;
+                docs.items[i].item.product_quantity -= 1;
                 console.log(GlobalCart);
                 docs.items[i] = GlobalCart;
                 docs.total += GlobalCart.item.product_price;
@@ -133,6 +135,10 @@ Router.post('/index.html/:param1', function (req, res, next) {
         // date = Date.now();
         // usp.save();
     });
+});
+
+Router.post('/payment', function(req, res) {
+    gatewa 
 });
 
 Router.post('/product_add', function (req, res) {
