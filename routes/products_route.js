@@ -1,8 +1,12 @@
 const express = require('express');
 const Router = express.Router();
+const stripe = require('stripe')('pk_test_6eUlykjUkKIa4viRDPGNKjwv');
+const async = require('async');
+
 var Product = require('../models/product');
 const Cart = require('../models/cart');
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
+
 
 const fileUpload = require('express-fileupload');
 Router.use(fileUpload());
@@ -138,7 +142,50 @@ Router.post('/index.html/:param1', function (req, res, next) {
 });
 
 Router.post('/payment', function(req, res) {
-    gatewa 
+    var stripeToken = req.body.stripeToken;
+    
+    var currentCharges = Math.round(req.body.stripeMoney * 100);
+
+    stripe.customers.create({
+        source: stripeToken,
+    }).then((customer) => {
+        return stripe.charges.create({
+            amount: currentCharges,
+            currency: 'usd',
+            customer: customer.id
+        });
+    }).then((charge) => {
+        async.waterfall([
+            (callback) => {
+                Cart.findOne({owner: req.user._id}, (err, cart) => {
+                    callback(err, cart);
+                });
+            },
+            (cart, callback) => {
+                User.findOne({_id: req.user._id}, (err, user) => {
+                    if (user) {
+                        for (let i = 0; i < cart.items.length; i++) {
+                            user.history.push({
+                                item: cart.items[i].item,
+                                paid: cart.items[i].price
+                            });
+                        }
+                        user.save((err, user) => {
+                            if (err) return next(err);
+                            callback(err, user);
+                        });
+                    }
+                });
+
+            },
+            (user) => {
+                Cart.update({owner: user._id}, {$set: {items: [], total: 0}}, (err, updated) => {
+                    if (updated) {
+                        res.redirect('/profile');
+                    }
+                });
+            }]);
+    });
 });
 
 Router.post('/product_add', function (req, res) {

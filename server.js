@@ -2,15 +2,24 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 var app = express();
-const mongoose = require('./server/shop_database');
-const passport = require('passport');
+const mongoose = require('mongoose');
 const flash = require('connect-flash');
+const passport = require('passport');
+const secret = require('./config/secret');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const Product_Type = require('./models/product_type');
 const Cart = require('./models/cart');
 
+mongoose.connect(secret.database, {useNewUrlParser: true,  useUnifiedTopology: true}, (err) => {
+    if (err) {
+        console.log('Make sure the database server is running ' + err);
+    } else {
+        console.log('Connected to the database');
+    }
+});
+
 app.engine('ejs', require('ejs-locals'));
-require('./config/passport')(passport);
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,15 +29,16 @@ app.use(express.static(path.join(__dirname, './views')));
 //Expression session middleware
 app.use(
     session({
-        secret: 'secret',
+        secret: secret.secretKey,
         resave: true,
         saveUninitialized: true,
-        //cookie:{secure:true}this is causing trouble for now will fix it later...
+        store: new MongoStore({url: secret.database, autoReconnect: true}) //this will auto login / recoonect to server when ever request is received...
     }));
 
-//Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
+    //Passport middleware
+    app.use(passport.initialize());
+    app.use(passport.session());
+    require('./config/passport')(passport);
 
 //connect flash
 app.use(flash());
@@ -73,6 +83,7 @@ app.use((req, res, next) => {
 app.use('/', products, products_types, users, seller, custome_products, seller_products);
 
 
-app.listen('28017', () => {
+app.listen(secret.port, (err) => {
+    if(err) throw err;
     console.log('Server started on port 28017');
 });

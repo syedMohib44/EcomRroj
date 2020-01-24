@@ -1,7 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
-const FacebookStrategy = require('passport-facebook').Strategy;
-const secret = require('../config/secret');
+//const FacebookStrategy = require('passport-facebook').Strategy;
+//const secret = require('../config/secret');
 const User = require('../models/user');
 
 module.exports = function (passport) {
@@ -38,39 +38,43 @@ module.exports = function (passport) {
     });
 };
 
-module.exports = passport.use(new FacebookStrategy(secret.facebook, (token, refreshToken, profile, done) => {
+//TODO: add login with facebook.
 
-    User.findOne({facebook: profile.id}, function(err, user) {
-        if (err) return next(err);
+// module.exports = function (passport) {
+//     passport.use(new FacebookStrategy(secret.facebook, (token, refreshToken, profile, done) => {
 
-        if (user) {
-            return done(null, user);
-        } else {
-            async.waterfall([
-                (callback) => {
-                    const newUser = new User();
-                    newUser.name = profile.displayName;
-                    newUser.email = profile._json.email;
-                    newUser.facebook = profile.id;
-                    newUser.tokens.push({kind: 'facebook', token: token});
-                    newUser.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
+//     User.findOne({facebook: profile.id}, function(err, user) {
+//         if (err) return next(err);
 
-                    newUser.save((err) => {
-                        if (err) return next(err);
-                        callback(err, newUser._id);
-                    })
-                },
-                (newUser) => {
-                    const cart = new Cart();
+//         if (user) {
+//             return done(null, user);
+//         } else {
+//             async.waterfall([
+//                 (callback) => {
+//                     const newUser = new User();
+//                     newUser.name = profile.displayName;
+//                     newUser.email = profile._json.email;
+//                     newUser.facebook = profile.id;
+//                     newUser.tokens.push({kind: 'facebook', token: token});
+//                     newUser.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
 
-                    cart.owner = newUser._id;
-                    cart.save((err) => {
-                        if (err) return done(err);
-                        return done(err, newUser);
-                    });
-                }
-            ]);
+//                     newUser.save((err) => {
+//                         if (err) return next(err);
+//                         callback(err, newUser._id);
+//                     })
+//                 },
+//                 (newUser) => {
+//                     const cart = new Cart();
 
-        }
-    });
-}));
+//                     cart.owner = newUser._id;
+//                     cart.save((err) => {
+//                         if (err) return done(err);
+//                         return done(err, newUser);
+//                     });
+//                 }
+//             ]);
+
+//         }
+//     });
+// }));
+// }

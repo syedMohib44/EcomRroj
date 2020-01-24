@@ -97,6 +97,10 @@ Router.get('/auth/facebook/callback', passport.authenticate('facebook', {
 
 //Now Authentication
 Router.post('/login', function (req, res, next) {
+    var hour = 3600000; //when maxAge is set to 60000 (one minute), and 30 seconds. 
+    req.session.cookie.expires = new Date(Date.now() + hour); //req.session.cookie.maxAge will return the time remaining in milliseconds.
+    req.session.cookie.maxAge = hour;
+
     passport.authenticate('local', {
         successRedirect: '/index.html',
         failureRedirect: '/login',
@@ -106,6 +110,7 @@ Router.post('/login', function (req, res, next) {
 
 Router.get('/logout', function (req, res) {
     req.logout();
+    req.session.destroy();
     req.flash('success_msg', 'You are logged out successfully');
     res.redirect('/login');
 });
