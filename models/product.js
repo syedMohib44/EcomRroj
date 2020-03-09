@@ -23,4 +23,3 @@ var schema = new Schema({
 });
 
 module.exports = mongoose.model('Product', schema); 
-//mongoose.connect('mongodb://localhost:27017/shopdb', { useNewUrlParser: true,  useUnifiedTopology: true});
